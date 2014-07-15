@@ -96,6 +96,14 @@ An encrypted data bag is needed for use with this cookbook.  The data bag should
   </tr>
 </table>
 
+Installation
+------------
+Running the following commands is the easiest way to install this cookbook at the moment:
+```
+gem install knife-github-cookbooks
+knife cookbook github install bsc-networks/farnsworth-cookbook
+```
+
 Usage
 -----
 #### farnsworth::default
