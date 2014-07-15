@@ -8,29 +8,78 @@ For more information about Farnsworth itself can be found [here](https://github.
 Requirements
 ------------
 This cookbook depends on the following cookbooks:
-- LIST THERE HERE WHEN FINALIZED (with links)
-
-e.g.
-#### packages
-- `toaster` - farnsworth needs toaster to brown your bagel.
+- python
+- java
+- database
+- elasticsearch
+- apache2
+- selinux
+- application_python
 
 Attributes and Data Bags
 ----------
 
-e.g.
 #### farnsworth::default
 <table>
   <tr>
     <th>Key</th>
     <th>Type</th>
     <th>Description</th>
-    <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['farnsworth']['bacon']</tt></td>
+    <td><tt>[:farnsworth][]</tt></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><tt>[:farnsworth][:house_name]</tt></td>
+    <td>String</td>
+    <td>Full name of house, e.g. Davis House</td>
+  </tr>  
+    <tr>
+    <td><tt>[:farnsworth][:short_house_name]</tt></td>
+    <td>String</td>
+    <td>Shortened name of house, e.g. Davis</td>
+  </tr>
+    <tr>
+    <td><tt>[:farnsworth][:house_abbrev]</tt></td>
+    <td>String</td>
+    <td>3 letter abbreviation of house name, e.g. dav</td>
+  </tr>
+    <tr>
+    <td><tt>[:farnsworth][:site_domain]</tt></td>
+    <td>String</td>
+    <td>Domain of site, e.g. www.davishouse.com</td>
+  </tr>
+    <tr>
+    <td><tt>[:farnsworth][:enable_oauth]</tt></td>
     <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
+    <td>Whether or not to use OAuth, defaults to false if omitted</td>
+  </tr>
+    <tr>
+    <td><tt>[:farnsworth][:oauth_providers]</tt></td>
+    <td>Array (Strings)</td>
+    <td>List of providers to use w/ OAuth, e.g. ['facebook','google']</td>
+  </tr>
+    <tr>
+    <td><tt>[:farnsworth][:repo]</tt></td>
+    <td>String</td>
+    <td>URL from which to fetch the Farnsworth app</td>
+  </tr>
+    <tr>
+    <td><tt>[:farnsworth][:key_path]</tt></td>
+    <td>String</td>
+    <td>Path on host to find the encrypted data bag secret, default: '/etc/chef/keys/farnsworth_private.key'</td>
+  </tr>
+    <tr>
+    <td><tt>[:farnsworth][:site_root]</tt></td>
+    <td>String</td>
+    <td>Base path to install the app into, e.g. /usr/local/farnsworth</td>
+  </tr>
+    <tr>
+    <td><tt>[:farnsworth][]</tt></td>
+    <td></td>
+    <td></td>
   </tr>
 </table>
 
