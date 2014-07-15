@@ -124,7 +124,7 @@ application 'farnsworth' do
   owner farns_user
   group farns_user
   repository node[:farnsworth][:repo]
-  revision 'master'
+  revision 'v1.2.1'
   packages app_packages
   migrate true
   #symlink_before_migrate "house_settings.py" => "farnsworth/house_settings.py"
