@@ -72,16 +72,6 @@ end
 #  end
 #end
 
-python_virtualenv "/usr/local/farnsworth/shared/env" do
-  owner "davis-admin"
-  group "davis-admin"
-  action :create
-end
-
-python_pip "django-weekday-field" do
-  "/usr/local/farnsworth/shared/env"
-end
-
 # Apache VHost definition
 web_app 'farnsworth' do
   cookbook 'farnsworth'
