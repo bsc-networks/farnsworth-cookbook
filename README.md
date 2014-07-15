@@ -108,7 +108,9 @@ Usage
 -----
 #### farnsworth::default
 
-Include `farnsworth` in your node's `run_list`. That should be all!
+Include `farnsworth` in your node's `run_list`.
+
+If this is a fresh install, you will need to manually create an admin site user. To do this, first let the node converge successfully. Then, inside `node[:site_root]/current`, run `./manage.py createsuperuser` and follow the instructions, filling out the information as you choose.
 
 
 TODO
