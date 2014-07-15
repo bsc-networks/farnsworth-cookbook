@@ -16,6 +16,8 @@ This cookbook depends on the following cookbooks:
 - selinux
 - application_python
 
+This cookbook (when complete) should work on Ubuntu and CentOS.
+
 Attributes and Data Bags
 ----------
 
@@ -25,11 +27,6 @@ Attributes and Data Bags
     <th>Key</th>
     <th>Type</th>
     <th>Description</th>
-  </tr>
-  <tr>
-    <td><tt>[:farnsworth][]</tt></td>
-    <td></td>
-    <td></td>
   </tr>
   <tr>
     <td><tt>[:farnsworth][:house_name]</tt></td>
@@ -76,41 +73,44 @@ Attributes and Data Bags
     <td>String</td>
     <td>Base path to install the app into, e.g. /usr/local/farnsworth</td>
   </tr>
-    <tr>
-    <td><tt>[:farnsworth][]</tt></td>
+</table>
+
+An encrypted data bag is needed for use with this cookbook.  The data bag should be called `farnsworth`, and the data bag item within it should be named `private`. The following keys need to be defined:
+
+<table>
+  <tr>
+    <th>Key Name</th>
+    <th>Description</th>
+  </tr>
+  <tr>
     <td></td>
     <td></td>
+  </tr>
+  <tr>
+    <td><tt>postgres_password</tt></td>
+    <td>Password to access the database as the admin user (you define this, the cookbook sets it)</td>
+  </tr>
+  <tr>
+    <td><tt>secret_key</tt></td>
+    <td>Some long string of your choosing (try `openssl rand -base64 50`)</tt></td>
+  </tr>
+  <tr>
+    <td><tt>network_manager_password</tt></td>
+    <td>Password to the XXXnm@bsc.coop e-mail address</td>
   </tr>
 </table>
 
 Usage
 -----
 #### farnsworth::default
-TODO: Write usage instructions for each cookbook.
 
-e.g.
-Just include `farnsworth` in your node's `run_list`:
+Include `farnsworth` in your node's `run_list`. That should be all!
 
-```json
-{
-  "name":"my_node",
-  "run_list": [
-    "recipe[farnsworth]"
-  ]
-}
-```
 
-Contributing
-------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
-
-e.g.
-1. Fork the repository on Github
-2. Create a named feature branch (like `add_component_x`)
-3. Write your change
-4. Write tests for your change (if applicable)
-5. Run the tests, ensuring they all pass
-6. Submit a Pull Request using Github
+TODO
+----
+- Implement an attribute to choose either `nginx` or `apache`.
+- Allow specifying the exact data bag and item names in which private bits are stored
 
 License and Authors
 -------------------
