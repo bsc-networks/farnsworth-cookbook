@@ -1,0 +1,39 @@
+<% @secret = Chef::EncryptedDataBagItem.load_secret(node[:farnsworth][:key_path]) %>
+<% @private_bits = Chef::EncryptedDataBagItem.load("farnsworth", "private", @secret) %>
+
+SECRET_KEY = "<%= @private_bits['secret_key'] %>"
+
+HOUSE_NAME = "<%= node['farnsworth']['house_name'] %>"
+
+SHORT_HOUSE_NAME = "<%= node['farnsworth']['short_house_name'] %>"
+
+HOUSE_ABBREV = "<%= node['farnsworth']['house_abbrev'] %>"
+
+SITE_DOMAIN = "<%= node['farnsworth']['site_domain'] %>"
+
+POSTGRES_PASSWORD = "<%= @private_bits['postgres_password'] %>"
+
+<% if node['farnsworth']['use_email'] %>
+NETWORK_MANAGER_PASSWORD = "<%= @private_bits['network_manager_password'] %>"
+<% end %>
+
+<% if node['farnsworth']['enable_oauth'] %>
+ENABLE_OAUTH = True
+<% end %>
+
+<% if node['farnsworth']['oauth_providers'].include? 'facebook' %>
+SOCIAL_AUTH_FACEBOOK_KEY = "<%= @private_bits['key'] %>"
+SOCIAL_AUTH_FACEBOOK_SECRET = "<%= @private_bits['secret'] %>"
+<% end %>
+
+<% if node['farnsworth']['oauth_providers'].include? 'github' %>
+SOCIAL_AUTH_GITHUB_KEY = "<%= @private_bits['key'] %>"
+SOCIAL_AUTH_GITHUB_SECRET = "<%= @private_bits['secret'] %>"
+<% end %>
+
+<% if node['farnsworth']['oauth_providers'].include? 'google' %>
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "<%= @private_bits['key'] %>"
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "<%= @private_bits['secret'] %>"
+<% end %>
+
+

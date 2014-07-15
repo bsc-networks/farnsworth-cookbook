@@ -1,0 +1,6 @@
+WSGIPythonPath <%= node[:farnsworth][:site_root] %>/shared/env/lib/python2.6/site-packages
+<VirtualHost *:80>
+    WSGIScriptAlias / <%= node[:farnsworth][:site_root] %>/current/farnsworth/wsgi.py
+    DocumentRoot <%= node[:farnsworth][:site_root] %>
+    Alias /static/ <%= node[:farnsworth][:site_root] %>/static/
+</VirtualHost>
