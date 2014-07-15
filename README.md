@@ -83,10 +83,6 @@ An encrypted data bag is needed for use with this cookbook.  The data bag should
     <th>Description</th>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
     <td><tt>postgres_password</tt></td>
     <td>Password to access the database as the admin user (you define this, the cookbook sets it)</td>
   </tr>
