@@ -111,8 +111,8 @@ end
 
 application 'farnsworth' do
   path node[:farnsworth][:site_root]
-  owner 'apache'
-  group 'apache'
+  owner node[:apache][:user]
+  group node[:apache][:group]
   repository node[:farnsworth][:repo]
   revision 'v1.2.1'
   packages app_packages
