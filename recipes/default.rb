@@ -95,7 +95,6 @@ application 'farnsworth' do
   group node[:apache][:group]
   repository node[:farnsworth][:repo]
   revision 'v1.2.1_2'
-  packages app_packages
   migrate true
   #symlink_before_migrate "house_settings.py" => "farnsworth/house_settings.py"
   django do
