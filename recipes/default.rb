@@ -22,7 +22,7 @@ if node[:platform] == 'centos'
   package 'mod_wsgi' do
     action :install
   end
-elsif node[:platform] == 'debian'
+elsif node[:platform] == 'ubuntu'
   package 'libapache2-mod-wsgi' do
     action :install
   end
