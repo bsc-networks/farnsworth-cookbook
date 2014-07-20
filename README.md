@@ -116,7 +116,9 @@ If this is a fresh install, you will need to manually create an admin site user.
 TODO
 ----
 - Implement an attribute to choose either `nginx` or `apache`.
+- Include HTTPS support/toggle
 - Allow specifying the exact data bag and item names in which private bits are stored
+- Attribute for version of farnsworth to install
 
 License and Authors
 -------------------
