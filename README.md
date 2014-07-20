@@ -11,10 +11,13 @@ This cookbook depends on the following cookbooks:
 - python
 - java
 - database
+- postgresql
 - elasticsearch
 - apache2
 - selinux
 - application_python
+- git
+- simple_iptables
 
 This cookbook (when complete) should work on Ubuntu and CentOS.
 
