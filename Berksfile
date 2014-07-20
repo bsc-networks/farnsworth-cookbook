@@ -7,7 +7,5 @@ cookbook 'elasticsearch'
 cookbook 'apache2'
 cookbook 'selinux'
 cookbook 'application_python'
-
-# These two because pip packages use them
-cookbook 'mercurial'
+cookbook 'simple_iptables'
 cookbook 'git'

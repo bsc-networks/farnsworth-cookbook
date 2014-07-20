@@ -9,11 +9,11 @@
 include_recipe 'java'
 include_recipe 'python'
 include_recipe 'apache2'
+include_recipe 'simple_iptables'
 include_recipe 'postgresql::server'
 include_recipe 'database'
 include_recipe 'database::postgresql'
 include_recipe 'elasticsearch'
-include_recipe 'mercurial'
 include_recipe 'git'
 
 
@@ -43,34 +43,10 @@ service 'elasticsearch' do
   action :enable
 end
 
-# make sure the app repo is setup
-#git 'farnsworth' do
-#  action :checkout
-#  destination node[:farnsworth][:site_root]
-#  user farns_user
-#  group farns_user
-#end
-
-# place the config
-#template 'farnsworth_config' do
-#  source 'house_settings.py.erb'
-#  path "#{node[:farnsworth][:site_root]}/farnsworth/house_settings.py"
-#  owner farns_user
-#  group farns_user
-#end
-
-#python_virtualenv node[:site_root] do
-#  owner farns_user
-#  group farns_user
-#  action :create
-#end
-
-# install the farnsworth pip dependencies
-#node[:farnsworth][:pip_dependencies].each do |depend|
-#  python_pip depend do
-#    virtualenv node[:farnsworth][:site_root]
-#  end
-#end
+simple_iptables_rule "http" do
+  rule "--proto tcp --dport 80"
+  jump "ACCEPT"
+end
 
 # Apache VHost definition
 web_app 'farnsworth' do
