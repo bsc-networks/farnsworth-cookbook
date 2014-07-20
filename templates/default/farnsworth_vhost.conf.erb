@@ -1,4 +1,4 @@
-WSGIPythonPath <%= node[:farnsworth][:site_root] %>/shared/env/lib/python2.6/site-packages
+WSGIPythonPath <%= node[:farnsworth][:site_root] %>/shared/env/lib/python2.7/site-packages
 <VirtualHost *:80>
     WSGIScriptAlias / <%= node[:farnsworth][:site_root] %>/current/farnsworth/wsgi.py
     DocumentRoot <%= node[:farnsworth][:site_root] %>
