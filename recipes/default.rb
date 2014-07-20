@@ -52,13 +52,6 @@ simple_iptables_rule "http" do
   jump "ACCEPT"
 end
 
-# Apache VHost definition
-web_app 'farnsworth' do
-  cookbook 'farnsworth'
-  template 'farnsworth_vhost.conf.erb'
-  enable true
-end
-
 superuser_postgresql_connection = {
   :host => 'localhost',
   :username => 'postgres',
@@ -104,11 +97,9 @@ application 'farnsworth' do
   end
 end
 
-#postgresql_database "EXTRACT_NAME_HERE" do
-#  connection(
-#    :host => '127.0.0.1',
-#    :port => '5432',
-#    :username => 'postgres',
-#    :password => 'extracted postgres password',
-#  )
-#end
+# Apache VHost definition
+web_app 'farnsworth' do
+  cookbook 'farnsworth'
+  template 'farnsworth_vhost.conf.erb'
+  enable true
+end
