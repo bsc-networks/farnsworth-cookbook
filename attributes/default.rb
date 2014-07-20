@@ -28,4 +28,6 @@ default[:farnsworth][:site_root] = '/usr/local/farnsworth'
 #  default[:selinux][:booleans][:httpd_can_network_connect_db] = 'on'
 #  default[:selinux][:booleans][:httpd_can_network_connect] = 'on'
 #end
-default[:selinux][:state] = 'permissive'
+node[:selinux][:state] = 'permissive'
+
+node[:python][:virtualenv_version] = "2.7.5"
