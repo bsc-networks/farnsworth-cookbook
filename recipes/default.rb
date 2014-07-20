@@ -19,9 +19,13 @@ include_recipe 'git'
 
 if node[:platform] == 'centos'
   include_recipe 'selinux'
-  app_packages = ['gcc', 'mod_wsgi']
+  package 'mod_wsgi' do
+    action :install
+  end
 elsif node[:platform] == 'debian'
-  app_packages = ['gcc', 'libapache2-mod-wsgi']
+  package 'libapache2-mod-wsgi' do
+    action :install
+  end
 end
 
 secret = Chef::EncryptedDataBagItem.load_secret(node[:farnsworth][:key_path])
