@@ -6,7 +6,7 @@ default[:farnsworth][:site_domain] = 'davis.house'
 default[:farnsworth][:enable_oauth] = false
 default[:farnsworth][:oauth_providers] = []
 
-default[:farnsworth][:repo] = 'https://github.com/knagra/farnsworth.git'
+default[:farnsworth][:repo] = 'https://github.com/nherson/farnsworth.git'
 
 # path on the host where the secret key for the (farnsworth, private)
 # encrypted data bag item lives
