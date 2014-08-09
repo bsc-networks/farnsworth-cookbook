@@ -85,7 +85,7 @@ application 'farnsworth' do
   owner node[:apache][:user]
   group node[:apache][:group]
   repository node[:farnsworth][:repo]
-  revision 'v1.2.1_2'
+  revision node[:farnsworth][:app_version]
   migrate true
   django do
     settings_template 'house_settings.py.erb'

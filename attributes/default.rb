@@ -6,7 +6,11 @@ default[:farnsworth][:site_domain] = 'www.coop.house'
 default[:farnsworth][:enable_oauth] = false
 default[:farnsworth][:oauth_providers] = []
 
-default[:farnsworth][:repo] = 'https://github.com/knagra/farnsworth.git'
+default[:farnsworth][:repo] = 'https://github.com/nherson/farnsworth.git'
+
+# Version of the farnsworth app to install.  Looks for a git tag/release 
+# with the same version name
+default[:farnsworth][:app_version] = 'v1.2.1_2'
 
 # path on the host where the secret key for the (farnsworth, private)
 # encrypted data bag item lives
