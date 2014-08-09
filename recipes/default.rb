@@ -80,8 +80,6 @@ postgresql_database_user farns_user do
   action        :grant
 end
 
-
-
 application 'farnsworth' do
   path node[:farnsworth][:site_root]
   owner node[:apache][:user]
@@ -89,7 +87,6 @@ application 'farnsworth' do
   repository node[:farnsworth][:repo]
   revision 'v1.2.1_2'
   migrate true
-  #symlink_before_migrate "house_settings.py" => "farnsworth/house_settings.py"
   django do
     settings_template 'house_settings.py.erb'
     local_settings_file 'farnsworth/house_settings.py'
