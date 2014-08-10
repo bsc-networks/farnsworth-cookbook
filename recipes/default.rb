@@ -5,6 +5,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
+include_recipe 'yum'
 include_recipe 'java'
 include_recipe 'python'
 include_recipe 'apache2'
@@ -16,20 +17,27 @@ include_recipe 'simple_iptables'
 include_recipe 'postgresql::server'
 include_recipe 'database'
 include_recipe 'database::postgresql'
-include_recipe 'elasticsearch'
 include_recipe 'git'
 
-
+# Setup elasticsearch repo
 if node[:platform] == 'centos'
   include_recipe 'selinux'
-  package 'mod_wsgi' do
-    action :install
+  yum_repository "elasticsearch" do
+    description "Source for Elasticsearch packages"
+    baseurl "http://packages.elasticsearch.org/elasticsearch/1.3/centos"
+    gpgkey "http://packages.elasticsearch.org/GPG-KEY-elasticsearch"
+    action :create
   end
 elsif node[:platform] == 'ubuntu'
-  package 'libapache2-mod-wsgi' do
-    action :install
+  apt_repository 'elasticsearch' do
+    uri          'http://packages.elasticsearch.org/elasticsearch/1.3/debian'
+    distribution 'stable'
+    components   ['main']
+    key          'http://packages.elasticsearch.org/GPG-KEY-elasticsearch'
   end
 end
+
+package 'elasticsearch'
 
 secret = Chef::EncryptedDataBagItem.load_secret(node[:farnsworth][:key_path])
 private_bits = Chef::EncryptedDataBagItem.load("farnsworth", "private", secret)
