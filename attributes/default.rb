@@ -19,6 +19,11 @@ default[:farnsworth][:key_path] = '/etc/chef/keys/farnsworth_private.key'
 
 default[:farnsworth][:site_root] = '/usr/local/farnsworth'
 
+default[:farnsworth][:ssl_enabled] = false
+
+default[:farnsworth][:ssl_cert_file] = '/etc/ssl/server.crt'
+default[:farnsworth][:ssl_key_file] = '/etc/ssl/server.key'
+
 # Do not change the lines below this comment!
 #if node[:platform] == 'centos'
 #  default[:selinux][:booleans][:httpd_can_network_connect_db] = 'on'

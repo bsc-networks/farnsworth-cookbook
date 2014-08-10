@@ -1,14 +1,16 @@
 # Cookbook Name:: farnsworth
 # Recipe:: default
 #
-# Copyright 2014, Nicholas Herson, Berkeley Student Cooperative
-#
+# Copyright 2014, Nicholas Herson, Berkeley Student Cooperative #
 # All rights reserved - Do Not Redistribute
 #
 
 include_recipe 'java'
 include_recipe 'python'
 include_recipe 'apache2'
+if node[:farnsworth][:ssl_enabled]
+  include_recipe 'apache2::mod_ssl'
+end
 include_recipe 'simple_iptables'
 include_recipe 'postgresql::server'
 include_recipe 'database'
@@ -95,8 +97,16 @@ application 'farnsworth' do
 end
 
 # Apache VHost definition
-web_app 'farnsworth' do
-  cookbook 'farnsworth'
-  template 'farnsworth_vhost.conf.erb'
-  enable true
+if node[:farnsworth][:ssl_enabled]
+  web_app 'farnsworth' do
+    cookbook 'farnsworth'
+    template 'farnsworth_vhost.ssl.conf.erb'
+    enable true
+  end
+else
+  web_app 'farnsworth' do
+    cookbook 'farnsworth'
+    template 'farnsworth_vhost.conf.erb'
+    enable true
+  end
 end

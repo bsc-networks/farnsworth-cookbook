@@ -1,0 +1,14 @@
+WSGIPythonPath <%= Dir["#{node[:farnsworth][:site_root]}/shared/env/lib/python*/site-packages"][0] %>
+<VirtualHost *:443>
+    SSLEngine on
+    SSLCertificateFile <%= node[:farnsworth][:ssl_cert_file] %>
+    SSLCertificateKeyFile <%= node[:farnsworth][:ssl_key_file] %>
+
+    WSGIScriptAlias / <%= node[:farnsworth][:site_root] %>/current/farnsworth/wsgi.py
+    DocumentRoot <%= node[:farnsworth][:site_root] %>
+    Alias /static/ <%= node[:farnsworth][:site_root] %>/current/static/
+</VirtualHost>
+
+<VirtualHost *:80>
+   Redirect permanent / https://<%= node[:farnsworth][:site_domain]
+</VirtualHost *:80>
