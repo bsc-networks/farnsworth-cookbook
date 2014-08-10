@@ -22,18 +22,18 @@ ENABLE_OAUTH = True
 <% end %>
 
 <% if node['farnsworth']['oauth_providers'].include? 'facebook' %>
-SOCIAL_AUTH_FACEBOOK_KEY = "<%= @private_bits['key'] %>"
-SOCIAL_AUTH_FACEBOOK_SECRET = "<%= @private_bits['secret'] %>"
+SOCIAL_AUTH_FACEBOOK_KEY = "<%= @private_bits['facebook_key'] %>"
+SOCIAL_AUTH_FACEBOOK_SECRET = "<%= @private_bits['facebook_secret'] %>"
 <% end %>
 
 <% if node['farnsworth']['oauth_providers'].include? 'github' %>
-SOCIAL_AUTH_GITHUB_KEY = "<%= @private_bits['key'] %>"
-SOCIAL_AUTH_GITHUB_SECRET = "<%= @private_bits['secret'] %>"
+SOCIAL_AUTH_GITHUB_KEY = "<%= @private_bits['github_key'] %>"
+SOCIAL_AUTH_GITHUB_SECRET = "<%= @private_bits['github_secret'] %>"
 <% end %>
 
 <% if node['farnsworth']['oauth_providers'].include? 'google' %>
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "<%= @private_bits['key'] %>"
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "<%= @private_bits['secret'] %>"
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "<%= @private_bits['google_key'] %>"
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "<%= @private_bits['google_secret'] %>"
 <% end %>
 
 
