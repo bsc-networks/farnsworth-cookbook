@@ -14,6 +14,7 @@ if node[:farnsworth][:ssl_enabled]
 end
 include_recipe 'apache2::mod_wsgi'
 include_recipe 'simple_iptables'
+include_recipe 'postgresql'
 include_recipe 'postgresql::server'
 include_recipe 'database'
 include_recipe 'database::postgresql'
