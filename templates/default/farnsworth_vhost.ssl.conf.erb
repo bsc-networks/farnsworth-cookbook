@@ -10,5 +10,5 @@ WSGIPythonPath <%= Dir["#{node[:farnsworth][:site_root]}/shared/env/lib/python*/
 </VirtualHost>
 
 <VirtualHost *:80>
-   Redirect permanent / https://<%= node[:farnsworth][:site_domain]
-</VirtualHost *:80>
+    Redirect permanent / https://<%= node[:farnsworth][:site_domain] %>
+</VirtualHost>
