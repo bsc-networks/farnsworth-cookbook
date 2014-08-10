@@ -24,13 +24,13 @@ if node[:platform] == 'centos'
   include_recipe 'selinux'
   yum_repository "elasticsearch" do
     description "Source for Elasticsearch packages"
-    baseurl "http://packages.elasticsearch.org/elasticsearch/1.3/centos"
+    baseurl "http://packages.elasticsearch.org/elasticsearch/0.90/centos"
     gpgkey "http://packages.elasticsearch.org/GPG-KEY-elasticsearch"
     action :create
   end
 elsif node[:platform] == 'ubuntu'
   apt_repository 'elasticsearch' do
-    uri          'http://packages.elasticsearch.org/elasticsearch/1.3/debian'
+    uri          'http://packages.elasticsearch.org/elasticsearch/0.90/debian'
     distribution 'stable'
     components   ['main']
     key          'http://packages.elasticsearch.org/GPG-KEY-elasticsearch'
