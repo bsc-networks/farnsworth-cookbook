@@ -72,7 +72,7 @@ superuser_postgresql_connection = {
 
 postgresql_database farns_db do
   connection(
-    :host => 'localhost',
+    :host => '127.0.0.1',
     :username => 'postgres',
     :password => node[:postgresql][:password][:postgres]
   )
