@@ -64,6 +64,13 @@ simple_iptables_rule "http" do
   jump "ACCEPT"
 end
 
+if node[:farnsworth][:ssl_enabled]
+  simple_iptables_rule "http" do
+    rule "--proto tcp --dport 443"
+    jump "ACCEPT"
+  end
+end
+
 superuser_postgresql_connection = {
   :host => 'localhost',
   :username => 'postgres',
