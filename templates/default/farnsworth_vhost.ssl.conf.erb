@@ -4,11 +4,13 @@ WSGIPythonPath <%= Dir["#{node[:farnsworth][:site_root]}/shared/env/lib/python*/
     SSLCertificateFile <%= node[:farnsworth][:ssl_cert_file] %>
     SSLCertificateKeyFile <%= node[:farnsworth][:ssl_key_file] %>
 
+    ServerName <%= node[:farnsworth][:site_domain] %>
     WSGIScriptAlias / <%= node[:farnsworth][:site_root] %>/current/farnsworth/wsgi.py
     DocumentRoot <%= node[:farnsworth][:site_root] %>
     Alias /static/ <%= node[:farnsworth][:site_root] %>/current/static/
 </VirtualHost>
 
 <VirtualHost *:80>
+    ServerName <%= node[:farnsworth][:site_domain] %>
     Redirect permanent / https://<%= node[:farnsworth][:site_domain] %>
 </VirtualHost>
